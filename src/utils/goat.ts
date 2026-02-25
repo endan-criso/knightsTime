@@ -6,8 +6,8 @@ declare global {
   }
 }
 
-export const trackPageView = (path: string) => {
+export const trackPageView = () => {
   if (window.goatcounter && typeof window.goatcounter.count === "function") {
-    window.goatcounter.count({ path });
+     window.goatcounter.count({ path: window.location.pathname });
   }
 };

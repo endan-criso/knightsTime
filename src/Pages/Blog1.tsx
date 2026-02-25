@@ -4,13 +4,15 @@ import { useViewCount } from "../hooks/useViews";
 import GiscusComments from "../components/GiscusComments";
 import { useEffect } from "react";
 
-const Blog1: React.FC = () => {
 
-  const { views, loading } = useViewCount("blog-the-crisis-of-tomorrow");
+interface Blog1Props {
+  dark: boolean;
+}
 
-  useEffect(() => {
-    trackPageView("blog-the-crisis-of-tomorrow");
-  }, []);
+
+const Blog1: React.FC<Blog1Props> = ({ dark }) => {
+
+  const { views, loading } = useViewCount();
 
   return (
     <main className="p-6 md:p-10 max-w-7xl mx-auto">
@@ -244,7 +246,7 @@ const Blog1: React.FC = () => {
 
     <section className="mt-16 border-t pt-10">
       <h2 className="text-2xl font-bold mb-6">Discussion</h2>
-      <GiscusComments />
+      <GiscusComments dark={dark} />
     </section>
 
     </main>

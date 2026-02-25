@@ -1,8 +1,15 @@
 import Giscus from "@giscus/react";
+import type React from "react";
 
-const GiscusComments = () => {
+
+interface GiscusCommentsProps {
+  dark: boolean;
+}
+
+const GiscusComments: React.FC<GiscusCommentsProps> = ({ dark }) => {
   return (
     <Giscus
+      key={dark ? "dark" : "light"}
       repo="endan-criso/knightsTime"
       repoId="R_kgDOJjLhQ"
       category="Blog Comments"
@@ -11,7 +18,7 @@ const GiscusComments = () => {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme="preferred_color_scheme"
+      theme={dark ? "transparent_dark" : "light"}
       lang="en"
       loading="lazy"
     />

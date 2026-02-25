@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Knight from "../assets/knight.svg";
 
 interface BlogHolderProps {
-    Page: React.FC;
+    Page: React.FC<{ dark: boolean }>;
 }
 
 const BlogHolder: React.FC<BlogHolderProps> = ({Page}) => {
@@ -51,8 +51,9 @@ const BlogHolder: React.FC<BlogHolderProps> = ({Page}) => {
 
     return (
         <div className="min-h-screen bg-bg text-text transition-colors duration-300">
-         <header className="sticky top-0 z-50 flex justify-between items-center py-3 px-6 bg-surface border-b border-border backdrop-blur">
-        <div className="flex items-center gap-4">
+         <header className="sticky top-0 z-50 flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-3 px-4 sm:px-6 bg-surface border-b border-border backdrop-blur gap-2 sm:gap-0">
+          {/* Left Section */}
+        <div className="flex items-center gap-2">
           <img
             src={Knight}
             alt="Knight"
@@ -69,14 +70,14 @@ const BlogHolder: React.FC<BlogHolderProps> = ({Page}) => {
 
         <button
           onClick={toggleTheme}
-          className="px-4 py-2 rounded-lg bg-primary text-white hover:opacity-90 transition cursor-pointer"
+          className="px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg bg-primary text-white hover:opacity-90 transition cursor-pointer"
           style={{ color: "var(--color-text)" }}
         >
           {dark ? "Switch to Light" : "Switch to Dark"}
           
         </button>
       </header>
-            <Page />
+            <Page dark={dark} />
         </div>
     );
 }

@@ -1,32 +1,39 @@
 import { useEffect, useState } from "react";
+import { trackPageView } from "../utils/goat";
 
 interface ViewResponse {
   count: number;
 }
 
-export const useViewCount = (path: string) => {
+export const useViewCount = () => {
   const [views, setViews] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchViews = async () => {
-      try {
+    const run = async () => {
+      try {      
+        await trackPageView();
+
+        const path = window.location.pathname;
+        const encoded = encodeURIComponent(path);
+
         const res = await fetch(
-          `https://krishna.goatcounter.com/counter/${path}.json`
+          `https://krishna.goatcounter.com/counter/${encoded}.json`,
+          { cache: "no-store" }
         );
 
         const data: ViewResponse = await res.json();
         setViews(data.count);
-      } catch (error) {
-        console.error("Error fetching view count:", error);
-        setViews(null);
+      } catch (err) {
+        console.error("GoatCounter fetch failed:", err);
+        setViews(0);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchViews();
-  }, [path]);
+    run();
+  }, []);
 
   return { views, loading };
 };
