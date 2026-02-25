@@ -3,10 +3,10 @@ import Giscus from "@giscus/react";
 const GiscusComments = () => {
   return (
     <Giscus
-      repo="yourusername/yourrepo"
-      repoId="REPO_ID"
+      repo="endan-criso/knightsTime"
+      repoId="R_kgDOJjLhQ"
       category="Blog Comments"
-      categoryId="CATEGORY_ID"
+      categoryId="DIC_kwDOJjLhQs4CVu-"
       mapping="pathname"
       reactionsEnabled="1"
       emitMetadata="0"

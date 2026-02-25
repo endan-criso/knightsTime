@@ -1,10 +1,16 @@
 import Preview from "../components/Preview";
-import { useViewCount } from "../Hooks/useViews";
-import GiscusComments from "../Components/GiscusComments";
+import { trackPageView } from "../utils/goat";
+import { useViewCount } from "../hooks/useViews";
+import GiscusComments from "../components/GiscusComments";
+import { useEffect } from "react";
 
 const Blog1: React.FC = () => {
 
   const { views, loading } = useViewCount("blog-the-crisis-of-tomorrow");
+
+  useEffect(() => {
+    trackPageView("blog-the-crisis-of-tomorrow");
+  }, []);
 
   return (
     <main className="p-6 md:p-10 max-w-7xl mx-auto">

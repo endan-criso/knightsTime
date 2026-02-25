@@ -1,5 +1,5 @@
-import Blog1 from './Pages/Blog1'
-import BlogHolder from './Pages/BlogHolder'
+import Blog1 from './pages/Blog1'
+import BlogHolder from './pages/BlogHolder'
 
 function App() {
 
