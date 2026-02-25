@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  font-family: "Google Sans", "Inter", system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fb;
+  --color-text: #1c1c1e;
+  --color-muted: #6b7280;
+  --color-primary: #2563eb;
+  --color-border: #e5e7eb;
+}
+
+
+.dark {
+  --color-bg: #0b0f19;
+  --color-surface: #111827;
+  --color-text: #e5e7eb;
+  --color-muted: #9ca3af;
+  --color-primary: #3b82f6;
+  --color-border: #1f2937;
+}
+
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+
+/*typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 5px solid currentColor;
+  width: 0;
+  animation:
+    typing 3s steps(30) forwards,
+    blink 0.7s step-end infinite;
+}
+
